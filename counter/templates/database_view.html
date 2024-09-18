@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Items</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd; /* Light border for the entire table */
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd; /* Light border for table rows */
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            border-bottom: 2px solid #ddd; /* Slightly thicker border for header */
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        table caption {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        @media (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            th, td {
+                padding: 10px;
+                text-align: right;
+            }
+            th {
+                text-align: left;
+                background-color: #4CAF50;
+                color: white;
+            }
+            td {
+                text-align: left;
+                border: none;
+            }
+            tr {
+                margin-bottom: 10px;
+                border: 1px solid #ddd;
+            }
+            td::before {
+                content: attr(data-label);
+                font-weight: bold;
+                display: block;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Food Items</h1>
+    <table>
+        <caption>List of Food Items</caption>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Fat Total (g)</th>
+                <th>Fat Saturated (g)</th>
+                
+                <th>Sodium (mg)</th>
+                <th>Potassium (mg)</th>
+                <th>Cholesterol (mg)</th>
+                <th>Carbohydrates Total (g)</th>
+                <th>Fiber (g)</th>
+                <th>Sugar (g)</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in food_items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.fat_total_g }}</td>
+                <td>{{ item.fat_saturated_g }}</td>
+                
+                <td>{{ item.sodium_mg }}</td>
+                <td>{{ item.potassium_mg }}</td>
+                <td>{{ item.cholesterol_mg }}</td>
+                <td>{{ item.carbohydrates_total_g }}</td>
+                <td>{{ item.fiber_g }}</td>
+                <td>{{ item.sugar_g }}</td>
+                <td>{{ item.date }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="11">No food items found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
